@@ -19,6 +19,13 @@ benchmarking_module/
 │ ├── config.py
 │ ├── query_runner.py
 │ ├── utils.py
+├── output/
+│ ├── <timestamp>/
+│ ├── benchmark_results.csv
+│ ├── slowest_queries.csv
+│ ├── error_queries/
+│ │ ├── <query_id>.txt
+│ ├── <query_id>.txt
 ├── queries.csv
 ├── .env
 ├── main.py
@@ -27,6 +34,13 @@ benchmarking_module/
 - `src/config.py`: Loads configuration settings from the `.env` file.
 - `src/query_runner.py`: Contains the function to run a query and handle exceptions.
 - `src/utils.py`: Contains utility functions for saving results to CSV, calculating percentiles, and creating output folders.
+- `output/`: Contains subfolders for each run, named with the current timestamp.
+  - `<timestamp>/`: A folder created for each run, named with the current timestamp.
+    - `benchmark_results.csv`: Contains the results of the benchmark.
+    - `slowest_queries.csv`: Contains the top 5 slowest queries.
+    - `error_queries/`: Contains error logs for failed queries.
+      - `<query_id>.txt`: Contains error details for the failed query.
+    - `<query_id>.txt`: Contains the results of each query.
 - `queries.csv`: A CSV file containing the queries to be benchmarked.
 - `.env`: Environment variables for the project.
 - `main.py`: Main script to execute the benchmarking process.
