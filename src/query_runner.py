@@ -1,8 +1,10 @@
+import json
 import os
 import time
-import json
-from e6data_python_connector import Connection
+
 import grpc
+from e6data_python_connector import Connection
+
 
 def run_query(query, query_id, output_folder, config):
     print(f"Starting query {query_id}...")

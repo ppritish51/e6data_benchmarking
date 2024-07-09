@@ -1,10 +1,12 @@
 import os
-import pandas as pd
 from concurrent.futures import ProcessPoolExecutor, as_completed
-from datetime import datetime
+
+import pandas as pd
+
 from src.config import load_config
 from src.query_runner import run_query
 from src.utils import save_results_to_csv, calculate_percentiles, create_output_folder
+
 
 def main():
     config = load_config()
