@@ -12,6 +12,7 @@ This project is designed to run and benchmark multiple queries concurrently usin
 
 ## Project Structure
 
+```
 benchmarking_module/
 ├── src/
 │ ├── init.py
@@ -21,7 +22,7 @@ benchmarking_module/
 ├── queries.csv
 ├── .env
 ├── main.py
-
+```
 
 - `src/config.py`: Loads configuration settings from the `.env` file.
 - `src/query_runner.py`: Contains the function to run a query and handle exceptions.
