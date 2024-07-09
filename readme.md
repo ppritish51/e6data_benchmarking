@@ -92,3 +92,10 @@ To run the benchmarking process, execute the main script:
    ```bash
   python main.py
    ```
+
+## Output
+1. A new folder will be created inside the output directory for each run, named with the current timestamp.
+2. Each query's results are saved in a text file named after the query ID.
+3. Benchmark results are saved in benchmark_results.csv inside the output folder.
+4. The top 5 slowest queries are saved in slowest_queries.csv inside the output folder.
+5. Any errors encountered during query execution are logged in a separate error_queries folder inside the output folder.
