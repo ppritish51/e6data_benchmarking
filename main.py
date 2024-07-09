@@ -13,7 +13,7 @@ def main():
 
     # Load queries from CSV file
     queries_df = pd.read_csv('queries.csv', header=None, names=['query_id', 'query_text'])
-    queries = queries_df['query_text'].tolist()[:10]
+    queries = queries_df['query_text'].tolist()
 
     # Create output folder for this run
     output_folder = create_output_folder()
