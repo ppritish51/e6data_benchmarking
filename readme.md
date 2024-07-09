@@ -66,11 +66,11 @@ benchmarking_module/
    PORT=80
    CATALOG=<your_catalog>
    ```
-6**Prepare your queries.csv file with the following format:**
+6. **Prepare your queries.csv file with the following format:**
    ```bash
-  query_id,query_text # (remove this line)
-  TPCDS-13,"SELECT * FROM table WHERE condition;"
-  TPCDS-48,"SELECT * FROM table WHERE condition;"
+   query_id,query_text # (remove this line)
+   TPCDS-13,"SELECT * FROM table WHERE condition;"
+   TPCDS-48,"SELECT * FROM table WHERE condition;"
    ```
 
 ## Usage
