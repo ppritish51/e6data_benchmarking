@@ -2,7 +2,7 @@ import os
 import time
 import json
 from e6data_python_connector import Connection
-
+import grpc
 
 def run_query(query, query_id, output_folder, config):
     print(f"Starting query {query_id}...")
@@ -21,8 +21,29 @@ def run_query(query, query_id, output_folder, config):
         all_records = cursor.fetchall()
         explain_response = cursor.explain_analyse()
         planner_result = json.loads(explain_response.get('planner'))
+    except grpc.RpcError as e:
+        error_message = f"Error executing query {query_id}: {e.details()}"
+        print(error_message)
+        error_folder = os.path.join(output_folder, 'error_queries')
+        os.makedirs(error_folder, exist_ok=True)
+        with open(os.path.join(error_folder, f"{query_id}.txt"), 'w') as f:
+            f.write(f"Query ID: {query_id}\n")
+            f.write(f"Query Text: {query}\n")
+            f.write(f"Error: {e.details()}\n")
+        cursor.clear()
+        cursor.close()
+        conn.close()
+        return {
+            'query_id': query_id,
+            'parsing_time': None,
+            'execution_time': None,
+            'client_perceived_time': None,
+            'row_count': None,
+            'error': e.details()
+        }
     except Exception as e:
-        print(f"Error executing query {query_id}: {e}")
+        error_message = f"Error executing query {query_id}: {str(e)}"
+        print(error_message)
         error_folder = os.path.join(output_folder, 'error_queries')
         os.makedirs(error_folder, exist_ok=True)
         with open(os.path.join(error_folder, f"{query_id}.txt"), 'w') as f:
@@ -32,7 +53,14 @@ def run_query(query, query_id, output_folder, config):
         cursor.clear()
         cursor.close()
         conn.close()
-        return None
+        return {
+            'query_id': query_id,
+            'parsing_time': None,
+            'execution_time': None,
+            'client_perceived_time': None,
+            'row_count': None,
+            'error': str(e)
+        }
 
     end_time = time.time()
 
@@ -64,5 +92,6 @@ def run_query(query, query_id, output_folder, config):
         'parsing_time': parsing_time,
         'execution_time': execution_time,
         'client_perceived_time': client_perceived_time,
-        'row_count': row_count
+        'row_count': row_count,
+        'error': None
     }

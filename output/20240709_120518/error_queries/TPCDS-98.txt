@@ -1,0 +1,7 @@
+Query ID: TPCDS-98
+Query Text: select i_item_id    ,i_item_desc    ,i_category    ,i_class    ,i_current_price    ,sum(ss_ext_sales_price) as itemrevenue    ,sum(ss_ext_sales_price)*100/sum(sum(ss_ext_sales_price)) over      (partition by i_class) as revenueratio from     store_sales       ,item       ,date_dim where     ss_item_sk = i_item_sk      and i_category in ('Jewelry', 'Sports', 'Books')      and ss_sold_date_sk = d_date_sk     and d_date between cast('2001-01-12' as date)                 and (cast('2001-01-12' as date) + interval 30 days) group by     i_item_id     ,i_item_desc     ,i_category     ,i_class     ,i_current_price order by     i_category     ,i_class     ,i_item_id     ,i_item_desc     ,revenueratio
+Error: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:44.206.148.137:80: Failed to connect to remote host: FD shutdown"
+	debug_error_string = "UNKNOWN:Error received from peer  {created_time:"2024-07-09T12:05:39.787696+05:30", grpc_status:14, grpc_message:"failed to connect to all addresses; last error: UNAVAILABLE: ipv4:44.206.148.137:80: Failed to connect to remote host: FD shutdown"}"
+>

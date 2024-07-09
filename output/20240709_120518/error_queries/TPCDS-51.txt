@@ -1,0 +1,7 @@
+Query ID: TPCDS-51
+Query Text: select i_brand_id brand_id, i_brand brand,     sum(ss_ext_sales_price) ext_price from store_sales, date_dim, item where d_date_sk = ss_sold_date_sk     and ss_item_sk = i_item_sk     and i_manager_id=36     and d_moy=12     and d_year=2001 group by i_brand, i_brand_id order by ext_price desc, i_brand_id limit 100 
+Error: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNKNOWN: ipv4:44.208.213.146:80: tcp handshaker shutdown"
+	debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"failed to connect to all addresses; last error: UNKNOWN: ipv4:44.208.213.146:80: tcp handshaker shutdown", grpc_status:14, created_time:"2024-07-09T12:05:39.789652+05:30"}"
+>
