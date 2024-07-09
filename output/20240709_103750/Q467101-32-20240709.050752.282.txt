@@ -1,0 +1,19 @@
+Query ID: Q467101-32-20240709.050752.282
+Query Text: select dt.d_year     ,item.i_category_id     ,item.i_category     ,sum(ss_ext_sales_price) from  store_sales      ,date_dim dt     ,item where dt.d_date_sk = store_sales.ss_sold_date_sk     and store_sales.ss_item_sk = item.i_item_sk     and item.i_manager_id = 1     and dt.d_moy=12     and dt.d_year=1998 group by     dt.d_year         ,item.i_category_id         ,item.i_category order by    sum(ss_ext_sales_price) desc,dt.d_year         ,item.i_category_id         ,item.i_category limit 100 
+Parsing Time: 164 ms
+Execution Time: 0.955 s
+Client Perceived Time: 3.2426681518554688 s
+Row Count: 12
+Results:
+[1998, 3, 'Children', 31929667.430000003]
+[1998, 10, 'Electronics', 31300055.019999996]
+[1998, 1, 'Women', 30498755.409999996]
+[1998, 8, 'Sports', 30271179.74000001]
+[1998, 6, 'Jewelry', 30204591.029999994]
+[1998, 7, 'Home', 30038079.75999999]
+[1998, 2, 'Men', 29937640.71000001]
+[1998, 4, 'Shoes', 27969517.81]
+[1998, 9, 'Books', 27914649.859999985]
+[1998, 5, 'Music', 25000358.580000006]
+[1998, None, None, 217125.12999999992]
+[1998, 7, None, 105210.12]
