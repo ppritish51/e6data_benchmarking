@@ -42,3 +42,39 @@ benchmarking_module/
    ```bash
    git clone <repository-url>
    cd e6data-assignment
+   ```
+2. **Create a virtual environment and activate it:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
+3. **Install the required packages:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   ```
+4. **Create a virtual environment and activate it:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+5. **Create a .env file in the project root and add your configuration:**
+   ```bash
+   USERNAME=<your_username>
+   PASSWORD=<your_password>
+   HOST=<your_host>
+   DATABASE=<your_database>
+   PORT=80
+   CATALOG=<your_catalog>
+   ```
+6**Prepare your queries.csv file with the following format:**
+   ```bash
+  query_id,query_text # (remove this line)
+  TPCDS-13,"SELECT * FROM table WHERE condition;"
+  TPCDS-48,"SELECT * FROM table WHERE condition;"
+   ```
+
+## Usage
+To run the benchmarking process, execute the main script:
+   ```bash
+  python main.py
+   ```
